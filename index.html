@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Finance — фінансово-бухгалтерський супровід ФОП і ТОВ</title>
+<meta name="description" content="Happy Finance («Радісні фінанси») — бухгалтерський і управлінський облік для ФОП і ТОВ: відкриття бізнесу, щомісячний супровід, кадри, ПДВ, фінмоніторинг. Кропивницький, онлайн по всій Україні.">
+<meta property="og:title" content="Happy Finance — ваші податки під контролем">
+<meta property="og:description" content="Фінансово-бухгалтерський супровід ФОП і ТОВ. Кропивницький, онлайн по всій Україні.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/maria-panchenko.jpg">
+<meta name="theme-color" content="#0B1B47">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0B1B47}
+a{color:#102662}a:hover{color:#1E3A8A}
+*{box-sizing:border-box}
+input,textarea{font-family:inherit;font-size:16px}
+.mt{font-family:'Montserrat',sans-serif}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.caps{text-transform:uppercase;letter-spacing:.14em}
+.ribbed{background-color:#FB6835;background-image:repeating-linear-gradient(90deg,#FB6835 0px,#FF8A5B 7px,#FB6835 13px,#E4521C 20px,#FB6835 26px)}
+
+@keyframes sheet{0%{transform:translateY(60%)}100%{transform:translateY(0)}}
+@keyframes folderin{from{opacity:0;transform:translateY(60px) rotate(-4deg)}to{opacity:1;transform:rotate(-2deg)}}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes ck{to{stroke-dashoffset:0}}
+@keyframes stamp{0%{opacity:0;transform:scale(2.2) rotate(-24deg)}60%{opacity:1;transform:scale(.94) rotate(-10deg)}100%{opacity:1;transform:scale(1) rotate(-10deg)}}
+@keyframes clip{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(-2deg)}}
+@keyframes rv{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:none}}
+@keyframes panel{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes type{from{width:0}to{width:100%}}
+
+.folder{opacity:0;animation:folderin 1s .1s cubic-bezier(.2,.8,.2,1) forwards}
+.sheet{transform:translateY(60%);animation:sheet 1.3s 1s cubic-bezier(.2,.8,.2,1) forwards}
+.up{opacity:0;animation:up .9s ease forwards}
+.u1{animation-delay:.2s}.u2{animation-delay:.4s}.u3{animation-delay:.6s}.u4{animation-delay:.8s}
+.ck{stroke-dasharray:24;stroke-dashoffset:24;animation:ck .45s ease forwards}
+.c1{animation-delay:2.1s}.c2{animation-delay:2.4s}.c3{animation-delay:2.7s}.c4{animation-delay:3s}
+.stamp{opacity:0;animation:stamp .7s 3.3s cubic-bezier(.3,1.6,.5,1) forwards}
+.pclip{animation:clip 5s ease-in-out infinite;transform-origin:50% 10%}
+.panel{animation:panel .45s cubic-bezier(.2,.8,.2,1)}
+.typed{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;width:0;animation:type 1.4s 1.6s steps(24) forwards}
+
+.ftab{transition:transform .25s ease, background .25s ease}
+.ftab:hover{transform:translateY(-4px)}
+.btnf{transition:transform .25s ease, box-shadow .25s ease}
+.btnf:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(251,104,53,.9)}
+.case{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.case:hover{transform:translateY(-12px) rotate(0deg)!important}
+.navf{text-decoration:none;transition:color .2s ease}
+.navf:hover{color:#FB6835!important}
+.fld:focus{outline:none;border-bottom-color:#FB6835!important;background:#FFF8F4}
+
+@supports (animation-timeline: view()){
+.rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 35%}
+}
+@keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.prog{position:fixed;left:0;top:0;height:3px;width:100%;background:#FB6835;transform-origin:left;transform:scaleX(0);z-index:50;pointer-events:none}
+@supports (animation-timeline: scroll()){.prog{animation:prog linear both;animation-timeline:scroll(root)}}
+@media (max-width: 760px){
+.hnav{order:3;width:100%;flex-wrap:nowrap!important;overflow-x:auto;gap:22px!important;padding-bottom:6px;white-space:nowrap}
+.ftabs{flex-wrap:nowrap!important;overflow-x:auto;padding-left:0!important;padding-top:6px}
+.ftabs button{flex:none;white-space:nowrap}
+.stampbig{width:104px!important;height:104px!important;top:-10px!important}
+}
+@media (prefers-reduced-motion: reduce){
+.prog{animation:none!important;display:none}
+.folder,.up,.rv,.panel{animation:none!important;opacity:1!important;transform:none!important}
+.sheet{animation:none;transform:none}
+.ck{animation:none;stroke-dashoffset:0}
+.stamp{animation:none;opacity:1;transform:rotate(-10deg)}
+.pclip{animation:none}
+.typed{animation:none;width:auto}
+}
+</style>
+</head>
+<body>
+
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #FFFFFF; background: #0B1B47; width: 100%; line-height: 1.6; overflow-x: hidden">
+<div aria-hidden="true" class="prog"></div>
+<header style="max-width: 1320px; margin: 0 auto; padding: 22px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px">
+<a aria-label="Happy Finance" href="#" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #FFFFFF">
+<svg aria-hidden="true" fill="none" height="42" viewbox="0 0 46 46" width="42"><rect height="43" rx="3" stroke="#FFFFFF" stroke-width="2" width="43" x="1.5" y="1.5"></rect><path d="M14 11v24M14 23h18M32 11v24M18.5 11v8.5a4.5 4.5 0 0 0 9 0V11M18.5 35v-7.5a4.5 4.5 0 0 1 9 0V35" stroke="#FFFFFF" stroke-linecap="round" stroke-width="2"></path></svg>
+<span class="mt" style="font-weight: 600; font-size: 15px; letter-spacing: .14em; line-height: 1.1">HAPPY<br/>FINANCE</span>
+</a>
+<nav class="mono hnav" style="display: flex; flex-wrap: wrap; gap: 26px; font-size: 14px">
+<a class="navf" href="#f-poslugy" style="color: #D5DBEA">/послуги</a>
+<a class="navf" href="#f-sprava" style="color: #D5DBEA">/засновниця</a>
+<a class="navf" href="#f-kliienty" style="color: #D5DBEA">/клієнти</a>
+<a class="navf" href="#f-komanda" style="color: #D5DBEA">/команда</a>
+<a class="navf" href="#f-zaiavka" style="color: #D5DBEA">/заявка</a>
+</nav>
+<a class="btnf" href="#f-zaiavka" style="text-decoration: none; background: #FB6835; color: #102662; font-weight: 700; padding: 13px 22px; border-radius: 6px; min-height: 48px; display: inline-flex; align-items: center">Відкрити справу</a>
+</header>
+<section style="max-width: 1320px; margin: 0 auto; padding: 48px 24px 120px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 26px">
+<span class="up u1 mono" style="font-size: 13px; color: #CAAE99">// фінансово-бухгалтерський супровід</span>
+<h1 class="up u2 mt" style="margin: 0; font-weight: 700; font-size: clamp(40px, 5.4vw, 80px); line-height: 1.03; letter-spacing: -0.02em">Ваші податки — <br/>під <span style="color: #FB6835">контролем.</span></h1>
+<p class="up u3" style="margin: 0; font-size: 19px; color: #D5DBEA; max-width: 520px">Ведемо бухгалтерію ФОП і ТОВ як окрему справу кожного клієнта: свій документообіг, точки контролю й цифри, за якими власник ухвалює рішення.</p>
+<div class="up u4" style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="btnf" href="#f-zaiavka" style="text-decoration: none; background: #FB6835; color: #102662; font-weight: 700; font-size: 17px; padding: 18px 28px; border-radius: 6px; min-height: 58px; display: inline-flex; align-items: center">Безкоштовна консультація</a>
+<a class="btnf" href="#f-poslugy" style="text-decoration: none; color: #FFFFFF; border: 1.5px solid #3A5294; font-weight: 600; font-size: 17px; padding: 18px 28px; border-radius: 6px; min-height: 58px; display: inline-flex; align-items: center">Наші послуги</a>
+</div>
+<div class="up u4 mono" style="display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 14px; color: #D5DBEA; border-top: 1px solid #22356E; padding-top: 18px">
+<span><b class="mt" style="color: #FFFFFF; font-size: 22px; margin-right: 6px">7</b>років</span>
+<span><b class="mt" style="color: #FFFFFF; font-size: 22px; margin-right: 6px">25+</b>бізнесів на супроводі</span>
+<span><b class="mt" style="color: #FFFFFF; font-size: 22px; margin-right: 6px">5</b>спеціалістів</span>
+</div>
+</div>
+<div style="position: relative; min-height: 540px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10px">
+<div class="folder" style="position: relative; width: min(100%, 520px); height: 420px">
+<div style="position: absolute; left: 0; top: 0; width: 42%; height: 50px; background: #1B3373; border-radius: 10px 10px 0 0"></div>
+<div style="position: absolute; left: 0; right: 0; top: 36px; bottom: 0; background: #1B3373; border-radius: 0 10px 10px 10px"></div>
+<div class="sheet" style="position: absolute; left: 7%; right: 7%; top: -40px; height: 360px; background: #FFFFFF; color: #102662; border-radius: 4px; padding: 26px 26px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.5); display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<span class="mono" style="font-size: 12px; color: #4A5578">ЗВІТ · ЩОМІСЯЦЯ</span>
+<span class="mono" style="font-size: 12px; color: #4A5578">справа № 026</span>
+</div>
+<div class="mt" style="font-weight: 700; font-size: 22px"><span class="typed">Ваш бізнес: все в порядку</span></div>
+
+<div style="display: flex; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px">
+<span style="flex: none; width: 24px; height: 24px; border: 2px solid #102662; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="14" stroke="#FB6835" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" viewbox="0 0 24 24" width="14"><path class="ck c1" d="M5 12l5 5 9-10"></path></svg></span>Податки сплачено вчасно
+</div>
+
+<div style="display: flex; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px">
+<span style="flex: none; width: 24px; height: 24px; border: 2px solid #102662; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="14" stroke="#FB6835" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" viewbox="0 0 24 24" width="14"><path class="ck c2" d="M5 12l5 5 9-10"></path></svg></span>Звіти подано
+</div>
+
+<div style="display: flex; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px">
+<span style="flex: none; width: 24px; height: 24px; border: 2px solid #102662; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="14" stroke="#FB6835" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" viewbox="0 0 24 24" width="14"><path class="ck c3" d="M5 12l5 5 9-10"></path></svg></span>Ліміт доходу під контролем
+</div>
+
+<div style="display: flex; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px">
+<span style="flex: none; width: 24px; height: 24px; border: 2px solid #102662; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center"><svg aria-hidden="true" fill="none" height="14" stroke="#FB6835" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" viewbox="0 0 24 24" width="14"><path class="ck c4" d="M5 12l5 5 9-10"></path></svg></span>Первинку оформлено
+</div>
+
+</div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 58%; background: #102662; border-radius: 10px; box-shadow: 0 -10px 30px -10px rgba(0,0,0,.5); padding: 26px 28px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px">
+<svg aria-hidden="true" fill="none" height="40" viewbox="0 0 46 46" width="40"><rect height="43" rx="3" stroke="#FFFFFF" stroke-width="2" width="43" x="1.5" y="1.5"></rect><path d="M14 11v24M14 23h18M32 11v24M18.5 11v8.5a4.5 4.5 0 0 0 9 0V11M18.5 35v-7.5a4.5 4.5 0 0 1 9 0V35" stroke="#FFFFFF" stroke-linecap="round" stroke-width="2"></path></svg>
+<span class="mt" style="font-weight: 600; font-size: 18px; letter-spacing: .12em">HAPPY FINANCE</span>
+<span style="font-size: 13px; color: #CAAE99">фінансово-бухгалтерський супровід</span>
+</div>
+<svg aria-hidden="true" class="pclip" height="90" style="position: absolute; right: 16%; top: -64px" viewbox="0 0 40 90" width="40"><path d="M12 80V18a8 8 0 0 1 16 0v54a4 4 0 0 1-8 0V24" fill="none" stroke="#FB6835" stroke-linecap="round" stroke-width="4"></path></svg>
+</div>
+<div class="stamp stampbig" style="position: absolute; right: 0; top: 20px; width: 132px; height: 132px; border-radius: 50%; border: 3px solid #FB6835; color: #FB6835; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: rgba(11,27,71,.6)">
+<span class="mt" style="font-weight: 800; font-size: 16px; line-height: 1.1">ПІД<br/>КОНТРОЛЕМ</span>
+<span class="mono" style="font-size: 10px; margin-top: 4px">HAPPY FINANCE</span>
+</div>
+</div>
+</section>
+<section id="f-poslugy" style="background: #F4F1EE; color: #102662; padding: 110px 24px">
+<div style="max-width: 1320px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px">
+<div class="rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="mono" style="font-size: 13px; color: #6B5A4C">// розділи справи</span>
+<h2 class="mt" style="margin: 0; font-weight: 700; font-size: clamp(34px, 4.4vw, 60px); line-height: 1.05; letter-spacing: -0.02em">Що ми ведемо для вас</h2>
+</div>
+<p style="margin: 0; max-width: 380px; color: #4A5578">Оберіть вкладку — побачите, що входить у кожен розділ.</p>
+</div>
+<div class="rv">
+<div aria-label="Розділи послуг" class="ftabs" role="tablist" style="display: flex; flex-wrap: wrap; gap: 6px; padding-left: 10px">
+
+<button aria-selected="true" class="ftab mt" data-action="t.pick" data-i="0" role="tab" style="border: none; background: #102662; color: #FFFFFF; font-weight: 600; font-size: 15px; padding: 14px 20px 18px; min-height: 52px; border-radius: 10px 10px 0 0; cursor: pointer; margin-bottom: -6px" type="button">Відкриття</button>
+
+<button aria-selected="false" class="ftab mt" data-action="t.pick" data-i="1" role="tab" style="border: none; background: #DDD6CF; color: #102662; font-weight: 600; font-size: 15px; padding: 14px 20px 18px; min-height: 52px; border-radius: 10px 10px 0 0; cursor: pointer; margin-bottom: -6px" type="button">Супровід ФОП</button>
+
+<button aria-selected="false" class="ftab mt" data-action="t.pick" data-i="2" role="tab" style="border: none; background: #DDD6CF; color: #102662; font-weight: 600; font-size: 15px; padding: 14px 20px 18px; min-height: 52px; border-radius: 10px 10px 0 0; cursor: pointer; margin-bottom: -6px" type="button">Супровід ТОВ</button>
+
+<button aria-selected="false" class="ftab mt" data-action="t.pick" data-i="3" role="tab" style="border: none; background: #DDD6CF; color: #102662; font-weight: 600; font-size: 15px; padding: 14px 20px 18px; min-height: 52px; border-radius: 10px 10px 0 0; cursor: pointer; margin-bottom: -6px" type="button">Кадри</button>
+
+<button aria-selected="false" class="ftab mt" data-action="t.pick" data-i="4" role="tab" style="border: none; background: #DDD6CF; color: #102662; font-weight: 600; font-size: 15px; padding: 14px 20px 18px; min-height: 52px; border-radius: 10px 10px 0 0; cursor: pointer; margin-bottom: -6px" type="button">ПДВ</button>
+
+<button aria-selected="false" class="ftab mt" data-action="t.pick" data-i="5" role="tab" style="border: none; background: #DDD6CF; color: #102662; font-weight: 600; font-size: 15px; padding: 14px 20px 18px; min-height: 52px; border-radius: 10px 10px 0 0; cursor: pointer; margin-bottom: -6px" type="button">Управлінський облік</button>
+
+<button aria-selected="false" class="ftab mt" data-action="t.pick" data-i="6" role="tab" style="border: none; background: #DDD6CF; color: #102662; font-weight: 600; font-size: 15px; padding: 14px 20px 18px; min-height: 52px; border-radius: 10px 10px 0 0; cursor: pointer; margin-bottom: -6px" type="button">Фінмоніторинг</button>
+
+</div>
+<div style="background: #102662; color: #FFFFFF; border-radius: 0 12px 12px 12px; padding: clamp(24px, 4vw, 52px); position: relative; overflow: hidden">
+<div class="panel" data-panel="0" data-title="Відкриття бізнесу" id="panel-0" role="tabpanel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span class="mono" style="font-size: 13px; color: #CAAE99">ФОП і ТОВ</span>
+<h3 class="mt" style="margin: 0; font-weight: 700; font-size: clamp(28px, 3.2vw, 44px); line-height: 1.1">Відкриття бізнесу</h3>
+<p style="margin: 0; font-size: 18px; color: #D5DBEA">Реєструємо онлайн — для ФОП навіть без вашої участі.</p>
+<a class="btnf" data-action="orderCur" href="#f-zaiavka" style="align-self: flex-start; text-decoration: none; background: #FB6835; color: #102662; font-weight: 700; padding: 15px 22px; border-radius: 6px; min-height: 52px; display: inline-flex; align-items: center; margin-top: 8px">Залишити заявку на послугу</a>
+</div>
+<div style="background: #FFFFFF; color: #102662; border-radius: 4px; padding: 26px 28px; box-shadow: 0 20px 40px -20px rgba(0,0,0,.5)">
+<div class="mono" style="font-size: 12px; color: #4A5578; padding-bottom: 12px; border-bottom: 2px solid #102662; margin-bottom: 6px">ЗМІСТ РОЗДІЛУ</div>
+<ul style="margin: 0; padding: 0; list-style: none">
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">01</span>Підбір КВЕДів</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">02</span>Підбір оптимальної системи оподаткування</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">03</span>Онлайн-реєстрація ФОП без участі власника</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">04</span>Онлайн-реєстрація ТОВ за модельним статутом</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">05</span>Закриття ФОП</li>
+
+</ul>
+</div>
+</div><div class="panel" data-panel="1" data-title="Щомісячний супровід ФОП" id="panel-1" role="tabpanel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: start; display: none">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span class="mono" style="font-size: 13px; color: #CAAE99">ФОП</span>
+<h3 class="mt" style="margin: 0; font-weight: 700; font-size: clamp(28px, 3.2vw, 44px); line-height: 1.1">Щомісячний супровід ФОП</h3>
+<p style="margin: 0; font-size: 18px; color: #D5DBEA">Податки, ліміти, первинка і звіти — під нашим контролем щомісяця.</p>
+<a class="btnf" data-action="orderCur" href="#f-zaiavka" style="align-self: flex-start; text-decoration: none; background: #FB6835; color: #102662; font-weight: 700; padding: 15px 22px; border-radius: 6px; min-height: 52px; display: inline-flex; align-items: center; margin-top: 8px">Залишити заявку на послугу</a>
+</div>
+<div style="background: #FFFFFF; color: #102662; border-radius: 4px; padding: 26px 28px; box-shadow: 0 20px 40px -20px rgba(0,0,0,.5)">
+<div class="mono" style="font-size: 12px; color: #4A5578; padding-bottom: 12px; border-bottom: 2px solid #102662; margin-bottom: 6px">ЗМІСТ РОЗДІЛУ</div>
+<ul style="margin: 0; padding: 0; list-style: none">
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">01</span>Аудит кабінету в податковій</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">02</span>Реквізити й контроль своєчасної сплати податків</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">03</span>Перевірка банківської виписки, контроль ліміту доходу</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">04</span>Книга доходів, зміни КВЕД онлайн</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">05</span>Реєстрація ПРРО та віддалена робота в ньому</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">06</span>Рахунки, акти, накладні, шаблони договорів</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">07</span>Звіти в податкову, акти звірок</li>
+
+</ul>
+</div>
+</div><div class="panel" data-panel="2" data-title="Повний супровід ТОВ" id="panel-2" role="tabpanel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: start; display: none">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span class="mono" style="font-size: 13px; color: #CAAE99">ТОВ</span>
+<h3 class="mt" style="margin: 0; font-weight: 700; font-size: clamp(28px, 3.2vw, 44px); line-height: 1.1">Повний супровід ТОВ</h3>
+<p style="margin: 0; font-size: 18px; color: #D5DBEA">Єдиний податок або загальна система, з ПДВ і без, експорт та імпорт.</p>
+<a class="btnf" data-action="orderCur" href="#f-zaiavka" style="align-self: flex-start; text-decoration: none; background: #FB6835; color: #102662; font-weight: 700; padding: 15px 22px; border-radius: 6px; min-height: 52px; display: inline-flex; align-items: center; margin-top: 8px">Залишити заявку на послугу</a>
+</div>
+<div style="background: #FFFFFF; color: #102662; border-radius: 4px; padding: 26px 28px; box-shadow: 0 20px 40px -20px rgba(0,0,0,.5)">
+<div class="mono" style="font-size: 12px; color: #4A5578; padding-bottom: 12px; border-bottom: 2px solid #102662; margin-bottom: 6px">ЗМІСТ РОЗДІЛУ</div>
+<ul style="margin: 0; padding: 0; list-style: none">
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">01</span>Первинні документи: рахунки, накладні, акти, договори, ТТН, ПРРО</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">02</span>Клієнт-банк: платежі й проведення в ПЗ</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">03</span>Проведення всіх господарських операцій</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">04</span>Контроль взаєморозрахунків</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">05</span>Звіти в податкову, статистику, ПФУ</li>
+
+</ul>
+</div>
+</div><div class="panel" data-panel="3" data-title="Кадровий облік" id="panel-3" role="tabpanel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: start; display: none">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span class="mono" style="font-size: 13px; color: #CAAE99">ФОП з працівниками і ТОВ</span>
+<h3 class="mt" style="margin: 0; font-weight: 700; font-size: clamp(28px, 3.2vw, 44px); line-height: 1.1">Кадровий облік</h3>
+<p style="margin: 0; font-size: 18px; color: #D5DBEA">Від прийняття на роботу до звільнення — без помилок і штрафів.</p>
+<a class="btnf" data-action="orderCur" href="#f-zaiavka" style="align-self: flex-start; text-decoration: none; background: #FB6835; color: #102662; font-weight: 700; padding: 15px 22px; border-radius: 6px; min-height: 52px; display: inline-flex; align-items: center; margin-top: 8px">Залишити заявку на послугу</a>
+</div>
+<div style="background: #FFFFFF; color: #102662; border-radius: 4px; padding: 26px 28px; box-shadow: 0 20px 40px -20px rgba(0,0,0,.5)">
+<div class="mono" style="font-size: 12px; color: #4A5578; padding-bottom: 12px; border-bottom: 2px solid #102662; margin-bottom: 6px">ЗМІСТ РОЗДІЛУ</div>
+<ul style="margin: 0; padding: 0; list-style: none">
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">01</span>Прийняття на роботу, зокрема під гранти</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">02</span>Трудові договори</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">03</span>Нарахування зарплати, табель</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">04</span>Лікарняні та декретні</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">05</span>Звільнення і звіти</li>
+
+</ul>
+</div>
+</div><div class="panel" data-panel="4" data-title="ПДВ і податкові накладні" id="panel-4" role="tabpanel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: start; display: none">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span class="mono" style="font-size: 13px; color: #CAAE99">платники ПДВ</span>
+<h3 class="mt" style="margin: 0; font-weight: 700; font-size: clamp(28px, 3.2vw, 44px); line-height: 1.1">ПДВ і податкові накладні</h3>
+<p style="margin: 0; font-size: 18px; color: #D5DBEA">Реєструємо, розблоковуємо, звітуємо.</p>
+<a class="btnf" data-action="orderCur" href="#f-zaiavka" style="align-self: flex-start; text-decoration: none; background: #FB6835; color: #102662; font-weight: 700; padding: 15px 22px; border-radius: 6px; min-height: 52px; display: inline-flex; align-items: center; margin-top: 8px">Залишити заявку на послугу</a>
+</div>
+<div style="background: #FFFFFF; color: #102662; border-radius: 4px; padding: 26px 28px; box-shadow: 0 20px 40px -20px rgba(0,0,0,.5)">
+<div class="mono" style="font-size: 12px; color: #4A5578; padding-bottom: 12px; border-bottom: 2px solid #102662; margin-bottom: 6px">ЗМІСТ РОЗДІЛУ</div>
+<ul style="margin: 0; padding: 0; list-style: none">
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">01</span>Реєстрація податкових накладних</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">02</span>Розблокування податкових накладних</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">03</span>Звіти з ПДВ</li>
+
+</ul>
+</div>
+</div><div class="panel" data-panel="5" data-title="Цифри для управління" id="panel-5" role="tabpanel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: start; display: none">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span class="mono" style="font-size: 13px; color: #CAAE99">власники бізнесу</span>
+<h3 class="mt" style="margin: 0; font-weight: 700; font-size: clamp(28px, 3.2vw, 44px); line-height: 1.1">Цифри для управління</h3>
+<p style="margin: 0; font-size: 18px; color: #D5DBEA">Без цифр управління — це ілюзія. Даємо власнику реальну картину бізнесу.</p>
+<a class="btnf" data-action="orderCur" href="#f-zaiavka" style="align-self: flex-start; text-decoration: none; background: #FB6835; color: #102662; font-weight: 700; padding: 15px 22px; border-radius: 6px; min-height: 52px; display: inline-flex; align-items: center; margin-top: 8px">Залишити заявку на послугу</a>
+</div>
+<div style="background: #FFFFFF; color: #102662; border-radius: 4px; padding: 26px 28px; box-shadow: 0 20px 40px -20px rgba(0,0,0,.5)">
+<div class="mono" style="font-size: 12px; color: #4A5578; padding-bottom: 12px; border-bottom: 2px solid #102662; margin-bottom: 6px">ЗМІСТ РОЗДІЛУ</div>
+<ul style="margin: 0; padding: 0; list-style: none">
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">01</span>P&amp;L, Cashflow, Balance</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">02</span>Бланки звітів для контролю підрозділів</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">03</span>Аудит бізнес-процесів і пошук проблемних точок</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">04</span>Автоматизація обліку в CRM</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">05</span>Оргструктура, документообіг, точки контролю</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">06</span>Ревізія фінвідділу, навчання бухгалтерів</li>
+
+</ul>
+</div>
+</div><div class="panel" data-panel="6" data-title="Фінмоніторинг у банку" id="panel-6" role="tabpanel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: start; display: none">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span class="mono" style="font-size: 13px; color: #CAAE99">ФОП і ТОВ</span>
+<h3 class="mt" style="margin: 0; font-weight: 700; font-size: clamp(28px, 3.2vw, 44px); line-height: 1.1">Фінмоніторинг у банку</h3>
+<p style="margin: 0; font-size: 18px; color: #D5DBEA">Супровід перевірок будь-якої складності.</p>
+<a class="btnf" data-action="orderCur" href="#f-zaiavka" style="align-self: flex-start; text-decoration: none; background: #FB6835; color: #102662; font-weight: 700; padding: 15px 22px; border-radius: 6px; min-height: 52px; display: inline-flex; align-items: center; margin-top: 8px">Залишити заявку на послугу</a>
+</div>
+<div style="background: #FFFFFF; color: #102662; border-radius: 4px; padding: 26px 28px; box-shadow: 0 20px 40px -20px rgba(0,0,0,.5)">
+<div class="mono" style="font-size: 12px; color: #4A5578; padding-bottom: 12px; border-bottom: 2px solid #102662; margin-bottom: 6px">ЗМІСТ РОЗДІЛУ</div>
+<ul style="margin: 0; padding: 0; list-style: none">
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">01</span>Аналіз запиту банку</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">02</span>Підготовка пояснень і документів</li>
+
+<li style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px dashed #CDD3E3; font-size: 15px"><span class="mono" style="color: #FB6835; font-weight: 500">03</span>Супровід до завершення перевірки</li>
+
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="f-sprava" style="background: #102662; padding: 110px 24px">
+<div style="max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 56px; align-items: start">
+<div class="rv" style="display: flex; flex-direction: column; gap: 22px">
+<span class="mono" style="font-size: 13px; color: #CAAE99">// особова справа № 001</span>
+<h2 class="mt" style="margin: 0; font-weight: 700; font-size: clamp(34px, 4.4vw, 60px); line-height: 1.05; letter-spacing: -0.02em">«Компанія створилась сама»</h2>
+<p style="margin: 0; font-size: 18px; color: #D5DBEA">Засновниця ніколи не мріяла про власну компанію — здавалось, що ще рано і треба вчитися. За 7 років Happy Finance виросла з рекомендацій клієнтів.</p>
+<p style="margin: 0; font-size: 18px; color: #D5DBEA">Управлінський досвід дає консультаціям масштаб: через цифри, документообіг і комунікацію одразу видно проблеми бізнесу та відповідальність людей у команді.</p>
+<div style="position: relative; background: #1B3373; aspect-ratio: 3 / 4; width: 100%; max-width: 440px; border-radius: 4px; overflow: hidden">
+<img alt="Марія Панченко, засновниця Happy Finance" src="images/maria-panchenko.jpg" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%"/>
+<span class="mono" style="position: absolute; left: 14px; top: 14px; font-size: 11px; color: #CAAE99">ФОТО 3×4</span>
+</div>
+</div>
+<div class="rv" style="position: relative; background: #FFFFFF; color: #102662; border-radius: 4px; padding: clamp(24px, 3.4vw, 44px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.6)">
+<div style="position: absolute; right: -10px; top: -26px; transform: rotate(8deg)">
+<div class="ribbed" style="width: 70px; height: 110px; border-radius: 4px"></div>
+</div>
+<div class="mono" style="display: flex; justify-content: space-between; font-size: 12px; color: #4A5578; padding-bottom: 14px; border-bottom: 2px solid #102662">
+<span>ОСОБОВА СПРАВА</span><span>№ 001</span>
+</div>
+<div style="display: grid; grid-template-columns: minmax(110px, 160px) minmax(0, 1fr); border-bottom: 1px solid #DDE2EE">
+<span class="mono" style="font-size: 12px; color: #4A5578; padding: 14px 0">ПІБ</span><span class="mt" style="font-weight: 700; padding: 12px 0; font-size: 18px">Панченко Марія</span>
+</div>
+<div style="display: grid; grid-template-columns: minmax(110px, 160px) minmax(0, 1fr); border-bottom: 1px solid #DDE2EE">
+<span class="mono" style="font-size: 12px; color: #4A5578; padding: 14px 0">ПОСАДА</span><span style="font-weight: 600; padding: 12px 0">Засновниця, фінансова експертка, кризова менеджерка</span>
+</div>
+<div style="display: grid; grid-template-columns: minmax(110px, 160px) minmax(0, 1fr); border-bottom: 1px solid #DDE2EE">
+<span class="mono" style="font-size: 12px; color: #4A5578; padding: 14px 0">ОСВІТА</span><span style="padding: 12px 0">Бухгалтер, університет у Києві</span>
+</div>
+<div style="display: grid; grid-template-columns: minmax(110px, 160px) minmax(0, 1fr); border-bottom: 1px solid #DDE2EE">
+<span class="mono" style="font-size: 12px; color: #4A5578; padding: 14px 0">РЕЗУЛЬТАТИ</span><span style="padding: 12px 0">Товарообіг ×4 · бізнес зі збитків у прибуток · управління підприємством ~300 працівників</span>
+</div>
+<div style="display: grid; grid-template-columns: minmax(110px, 160px) minmax(0, 1fr); border-bottom: 1px solid #DDE2EE">
+<span class="mono" style="font-size: 12px; color: #4A5578; padding: 14px 0">КОНТАКТ</span><a href="https://instagram.com/Mariia_Panchenko_ua" style="padding: 12px 0; color: #102662; min-height: 44px; display: inline-flex; align-items: center">@Mariia_Panchenko_ua</a>
+</div>
+<div class="mono" style="font-size: 12px; color: #4A5578; padding: 18px 0 8px">ТРУДОВИЙ ШЛЯХ</div>
+
+<div style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 10px; padding: 10px 0; border-bottom: 1px dashed #CDD3E3">
+<span class="mono" style="color: #FB6835">01</span>
+<div><div style="font-weight: 700">Оператор, Спецторг</div><div style="font-size: 14px; color: #4A5578">Первинка, податкові, акти звірки — з 20 років, паралельно з навчанням</div></div>
+</div>
+
+<div style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 10px; padding: 10px 0; border-bottom: 1px dashed #CDD3E3">
+<span class="mono" style="color: #FB6835">02</span>
+<div><div style="font-weight: 700">Старший → головний бухгалтер</div><div style="font-size: 14px; color: #4A5578">Управлінська компанія, 16 філій</div></div>
+</div>
+
+<div style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 10px; padding: 10px 0; border-bottom: 1px dashed #CDD3E3">
+<span class="mono" style="color: #FB6835">03</span>
+<div><div style="font-weight: 700">Старший бухгалтер, «Фоззі Фарм»</div><div style="font-size: 14px; color: #4A5578">Касова дисципліна мережі аптек, навчання фармацевтів</div></div>
+</div>
+
+<div style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 10px; padding: 10px 0; border-bottom: 1px dashed #CDD3E3">
+<span class="mono" style="color: #FB6835">04</span>
+<div><div style="font-weight: 700">Бухгалтер → директор кафе</div><div style="font-size: 14px; color: #4A5578">Кропивницький: облік у 1С з нуля, експорт в Ізраїль, 50 людей</div></div>
+</div>
+
+<div style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 10px; padding: 10px 0; border-bottom: 1px dashed #CDD3E3">
+<span class="mono" style="color: #FB6835">05</span>
+<div><div style="font-weight: 700">Фінансовий директор</div><div style="font-size: 14px; color: #4A5578">Дистрибуційна компанія, 200+ людей, 3 роки</div></div>
+</div>
+
+<div style="display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 10px; padding: 10px 0; border-bottom: 1px dashed #CDD3E3">
+<span class="mono" style="color: #FB6835">06</span>
+<div><div style="font-weight: 700">Засновниця Happy Finance</div><div style="font-size: 14px; color: #4A5578">7 років, компанія з рекомендацій клієнтів</div></div>
+</div>
+
+<div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
+<div>
+<div class="mono" style="font-size: 12px; color: #4A5578">ОСОБЛИВІ ДОСЯГНЕННЯ</div>
+<div class="mt" style="font-weight: 800; font-size: 26px">Нестачі 1,5 млн → 10–12 тис ₴ / міс</div>
+</div>
+<div style="width: 110px; height: 110px; border-radius: 50%; border: 3px solid #FB6835; color: #E4521C; display: flex; align-items: center; justify-content: center; text-align: center; transform: rotate(-10deg)"><span class="mt" style="font-weight: 800; font-size: 12px; line-height: 1.2">ПЕРЕВІРЕНО<br/>ДОСВІДОМ<br/>7 РОКІВ</span></div>
+</div>
+</div>
+</div>
+</section>
+<section id="f-kliienty" style="background: #0B1B47; padding: 110px 24px">
+<div style="max-width: 1320px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 10px">
+<span class="mono" style="font-size: 13px; color: #CAAE99">// справи в роботі</span>
+<h2 class="mt" style="margin: 0; font-weight: 700; font-size: clamp(34px, 4.4vw, 60px); line-height: 1.05; letter-spacing: -0.02em">25+ бізнесів довіряють нам свої цифри</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 26px 20px">
+
+<div class="case rv" style="transform: rotate(-1.5deg); position: relative; padding-top: 30px">
+<span class="mono" style="position: absolute; left: 0; top: 0; background: #FFFFFF; color: #102662; font-size: 12px; font-weight: 500; padding: 7px 14px 10px; border-radius: 8px 8px 0 0">ТОВ · виробництво</span>
+<div style="background: #FFFFFF; color: #102662; border-radius: 0 8px 8px 8px; padding: 26px 24px; min-height: 200px; display: flex; flex-direction: column; gap: 10px">
+<span class="mt" style="font-weight: 800; font-size: 44px; line-height: 1">50</span>
+<span class="mt" style="font-weight: 700; font-size: 19px">працівників</span>
+<span style="font-size: 14px; opacity: .85">Повний бухгалтерський і управлінський облік.</span>
+</div>
+</div>
+
+<div class="case rv" style="transform: rotate(1deg); position: relative; padding-top: 30px">
+<span class="mono" style="position: absolute; left: 0; top: 0; background: #CAAE99; color: #102662; font-size: 12px; font-weight: 500; padding: 7px 14px 10px; border-radius: 8px 8px 0 0">ТОВ · автошкола</span>
+<div style="background: #CAAE99; color: #102662; border-radius: 0 8px 8px 8px; padding: 26px 24px; min-height: 200px; display: flex; flex-direction: column; gap: 10px">
+<span class="mt" style="font-weight: 800; font-size: 44px; line-height: 1">20</span>
+<span class="mt" style="font-weight: 700; font-size: 19px">працівників</span>
+<span style="font-size: 14px; opacity: .85">Бухгалтерський і кадровий облік.</span>
+</div>
+</div>
+
+<div class="case rv" style="transform: rotate(-1deg); position: relative; padding-top: 30px">
+<span class="mono" style="position: absolute; left: 0; top: 0; background: #1B3373; color: #FFFFFF; font-size: 12px; font-weight: 500; padding: 7px 14px 10px; border-radius: 8px 8px 0 0">ТОВ · агро</span>
+<div style="background: #1B3373; color: #FFFFFF; border-radius: 0 8px 8px 8px; padding: 26px 24px; min-height: 200px; display: flex; flex-direction: column; gap: 10px">
+<span class="mt" style="font-weight: 800; font-size: 44px; line-height: 1">10</span>
+<span class="mt" style="font-weight: 700; font-size: 19px">працівників</span>
+<span style="font-size: 14px; opacity: .85">Повний супровід виробництва.</span>
+</div>
+</div>
+
+<div class="case rv" style="transform: rotate(1.5deg); position: relative; padding-top: 30px">
+<span class="mono" style="position: absolute; left: 0; top: 0; background: #FFFFFF; color: #102662; font-size: 12px; font-weight: 500; padding: 7px 14px 10px; border-radius: 8px 8px 0 0">ТОВ · імпорт</span>
+<div style="background: #FFFFFF; color: #102662; border-radius: 0 8px 8px 8px; padding: 26px 24px; min-height: 200px; display: flex; flex-direction: column; gap: 10px">
+<span class="mt" style="font-weight: 800; font-size: 44px; line-height: 1">10</span>
+<span class="mt" style="font-weight: 700; font-size: 19px">працівників</span>
+<span style="font-size: 14px; opacity: .85">Облік ЗЕД-операцій.</span>
+</div>
+</div>
+
+<div class="case rv" style="transform: rotate(-1deg); position: relative; padding-top: 30px">
+<span class="mono" style="position: absolute; left: 0; top: 0; background: #FB6835; color: #102662; font-size: 12px; font-weight: 500; padding: 7px 14px 10px; border-radius: 8px 8px 0 0">ФОП · з ПДВ</span>
+<div style="background: #FB6835; color: #102662; border-radius: 0 8px 8px 8px; padding: 26px 24px; min-height: 200px; display: flex; flex-direction: column; gap: 10px">
+<span class="mt" style="font-weight: 800; font-size: 44px; line-height: 1">ПДВ</span>
+<span class="mt" style="font-weight: 700; font-size: 19px">послуги</span>
+<span style="font-size: 14px; opacity: .85">Податкові накладні та звітність з ПДВ.</span>
+</div>
+</div>
+
+<div class="case rv" style="transform: rotate(1deg); position: relative; padding-top: 30px">
+<span class="mono" style="position: absolute; left: 0; top: 0; background: #CAAE99; color: #102662; font-size: 12px; font-weight: 500; padding: 7px 14px 10px; border-radius: 8px 8px 0 0">ФОП · послуги</span>
+<div style="background: #CAAE99; color: #102662; border-radius: 0 8px 8px 8px; padding: 26px 24px; min-height: 200px; display: flex; flex-direction: column; gap: 10px">
+<span class="mt" style="font-weight: 800; font-size: 44px; line-height: 1">20</span>
+<span class="mt" style="font-weight: 700; font-size: 19px">клієнтів</span>
+<span style="font-size: 14px; opacity: .85">Щомісячний супровід і контроль лімітів.</span>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+<section id="f-komanda" style="background: #F4F1EE; color: #102662; padding: 110px 24px">
+<div style="max-width: 1320px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px">
+<div class="rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="mono" style="font-size: 13px; color: #6B5A4C">// особові справи команди</span>
+<h2 class="mt" style="margin: 0; font-weight: 700; font-size: clamp(34px, 4.4vw, 60px); line-height: 1.05; letter-spacing: -0.02em">Хто веде вашу справу</h2>
+</div>
+<p style="margin: 0; max-width: 380px; color: #4A5578">Пн–Пт до 17:00. Ми свідомо не працюємо у вихідні — щоб у робочий час усе було якісно й вчасно.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px">
+
+<article class="case rv" style="background: #FFFFFF; border-radius: 4px; padding: 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 20px 40px -30px rgba(16,38,98,.6)">
+<div class="mono" style="display: flex; justify-content: space-between; font-size: 11px; color: #4A5578; border-bottom: 2px solid #102662; padding-bottom: 10px"><span>ОСОБОВА СПРАВА</span><span>№ 002</span></div>
+<div style="display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 14px; align-items: center">
+<div style="border-radius: 2px; overflow: hidden">
+<img alt="Євгенія Мазепа" src="images/yevheniia-mazepa.jpg" style="display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 20%; background: #E9ECF4"/>
+
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span class="mt" style="font-weight: 700; font-size: 18px; line-height: 1.2">Євгенія Мазепа</span>
+<span style="font-size: 14px; font-weight: 600; color: #102662">Головний бухгалтер</span>
+</div>
+</div>
+<div class="mono" style="font-size: 11px; color: #4A5578">ДОСВІД</div>
+<span style="font-size: 14px; color: #23356E; margin-top: -6px">Від менеджера з первинкою та розмитненням в автомагазині до фінансового директора компанії з продажу підлогового покриття. Вела ТОВ на загальній системі та ЄП, ФОП і управлінський облік.</span>
+<div style="margin-top: auto; background: #F4F1EE; border-radius: 4px; padding: 10px 12px; display: flex; gap: 10px; font-size: 14px"><span class="mono" style="color: #E4521C; flex: none">+</span>17 років колекціонує настільні ігри, подорожі, випічка, кіт і собака</div>
+</article>
+
+<article class="case rv" style="background: #FFFFFF; border-radius: 4px; padding: 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 20px 40px -30px rgba(16,38,98,.6)">
+<div class="mono" style="display: flex; justify-content: space-between; font-size: 11px; color: #4A5578; border-bottom: 2px solid #102662; padding-bottom: 10px"><span>ОСОБОВА СПРАВА</span><span>№ 003</span></div>
+<div style="display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 14px; align-items: center">
+<div style="border-radius: 2px; overflow: hidden">
+
+<div style="background: #E9ECF4; aspect-ratio: 3 / 4; display: flex; align-items: center; justify-content: center; text-align: center; color: #4A5578; font-size: 11px; padding: 4px">Фото незабаром</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span class="mt" style="font-weight: 700; font-size: 18px; line-height: 1.2">Юлія Авер’янова</span>
+<span style="font-size: 14px; font-weight: 600; color: #102662">Бухгалтер із заробітної плати</span>
+</div>
+</div>
+<div class="mono" style="font-size: 11px; color: #4A5578">ДОСВІД</div>
+<span style="font-size: 14px; color: #23356E; margin-top: -6px">Понад 20 років у бухгалтерії: касир, головний бухгалтер, бухгалтер-операціоніст, 16 років на виробничо-комерційному підприємстві.</span>
+<div style="margin-top: auto; background: #F4F1EE; border-radius: 4px; padding: 10px 12px; display: flex; gap: 10px; font-size: 14px"><span class="mono" style="color: #E4521C; flex: none">+</span>Благополуччя, спорт і постійне навчання</div>
+</article>
+
+<article class="case rv" style="background: #FFFFFF; border-radius: 4px; padding: 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 20px 40px -30px rgba(16,38,98,.6)">
+<div class="mono" style="display: flex; justify-content: space-between; font-size: 11px; color: #4A5578; border-bottom: 2px solid #102662; padding-bottom: 10px"><span>ОСОБОВА СПРАВА</span><span>№ 004</span></div>
+<div style="display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 14px; align-items: center">
+<div style="border-radius: 2px; overflow: hidden">
+<img alt="Карина Омельченко" src="images/karyna-omelchenko.jpg" style="display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 20%; background: #E9ECF4"/>
+
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span class="mt" style="font-weight: 700; font-size: 18px; line-height: 1.2">Карина Омельченко</span>
+<span style="font-size: 14px; font-weight: 600; color: #102662">Бухгалтер з первинних документів і ПРРО</span>
+</div>
+</div>
+<div class="mono" style="font-size: 11px; color: #4A5578">ДОСВІД</div>
+<span style="font-size: 14px; color: #23356E; margin-top: -6px">Досвід у роздрібній торгівлі — продавцем і адміністратором, далі бухгалтером в агросфері.</span>
+<div style="margin-top: auto; background: #F4F1EE; border-radius: 4px; padding: 10px 12px; display: flex; gap: 10px; font-size: 14px"><span class="mono" style="color: #E4521C; flex: none">+</span>Книги, прогулянки, баланс роботи та сім’ї</div>
+</article>
+
+<article class="case rv" style="background: #FFFFFF; border-radius: 4px; padding: 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 20px 40px -30px rgba(16,38,98,.6)">
+<div class="mono" style="display: flex; justify-content: space-between; font-size: 11px; color: #4A5578; border-bottom: 2px solid #102662; padding-bottom: 10px"><span>ОСОБОВА СПРАВА</span><span>№ 005</span></div>
+<div style="display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 14px; align-items: center">
+<div style="border-radius: 2px; overflow: hidden">
+
+<div style="background: #E9ECF4; aspect-ratio: 3 / 4; display: flex; align-items: center; justify-content: center; text-align: center; color: #4A5578; font-size: 11px; padding: 4px">Фото незабаром</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span class="mt" style="font-weight: 700; font-size: 18px; line-height: 1.2">Надія Гончаренко</span>
+<span style="font-size: 14px; font-weight: 600; color: #102662">Менеджер із закупівель, первинні документи</span>
+</div>
+</div>
+<div class="mono" style="font-size: 11px; color: #4A5578">ДОСВІД</div>
+<span style="font-size: 14px; color: #23356E; margin-top: -6px">Керувала відділом обліку первинної документації — 13 людей у трьох філіях. Закупівлі й робота з постачальниками в мережах, бухгалтерія кількох підприємств в аудиторській компанії.</span>
+<div style="margin-top: auto; background: #F4F1EE; border-radius: 4px; padding: 10px 12px; display: flex; gap: 10px; font-size: 14px"><span class="mono" style="color: #E4521C; flex: none">+</span>Переговори, акти звірок, підготовка до перевірок</div>
+</article>
+
+</div>
+</div>
+</section>
+<section class="ribbed" style="padding: 90px 24px; color: #102662">
+<div style="max-width: 1320px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px">
+<h2 class="rv mt" style="margin: 0; font-weight: 800; font-size: clamp(32px, 4.2vw, 58px); line-height: 1.05; color: #FFFFFF; letter-spacing: -0.02em">Правила нашої справи</h2>
+<div class="rv" style="position: relative; padding-top: 22px">
+<div style="background: #FFFFFF; padding: 10px; border-radius: 2px; transform: rotate(-1.2deg); box-shadow: 0 30px 50px -30px rgba(16,38,98,.75)">
+<img alt="Руки команди разом" src="images/hands.jpg" style="display: block; width: 100%; aspect-ratio: 21 / 8; min-height: 200px; object-fit: cover; object-position: 50% 48%; filter: grayscale(1) contrast(1.05)"/>
+<div class="mono" style="display: flex; justify-content: space-between; gap: 12px; font-size: 12px; color: #4A5578; padding: 10px 4px 2px"><span>ДОДАТОК ДО СПРАВИ</span><span>«Справу ведемо разом»</span></div>
+</div>
+<svg aria-hidden="true" class="pclip" height="78" style="position: absolute; left: 7%; top: -6px" viewbox="0 0 40 90" width="34"><path d="M12 80V18a8 8 0 0 1 16 0v54a4 4 0 0 1-8 0V24" fill="none" stroke="#102662" stroke-linecap="round" stroke-width="4"></path></svg>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px">
+
+<div class="rv" style="background: #FFFFFF; border-radius: 6px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<span class="mono" style="font-size: 13px; color: #E4521C; font-weight: 500">§ 1</span>
+<span class="mt" style="font-weight: 700; font-size: 19px; line-height: 1.3">Не несемо проблем — даємо рішення</span>
+<span style="font-size: 15px; color: #4A5578">У будь-якій ситуації пропонуємо варіанти.</span>
+</div>
+
+<div class="rv" style="background: #FFFFFF; border-radius: 6px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<span class="mono" style="font-size: 13px; color: #E4521C; font-weight: 500">§ 2</span>
+<span class="mt" style="font-weight: 700; font-size: 19px; line-height: 1.3">Немає неможливих ситуацій</span>
+<span style="font-size: 15px; color: #4A5578">Під кожен запит шукаємо всі можливі шляхи.</span>
+</div>
+
+<div class="rv" style="background: #FFFFFF; border-radius: 6px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<span class="mono" style="font-size: 13px; color: #E4521C; font-weight: 500">§ 3</span>
+<span class="mt" style="font-weight: 700; font-size: 19px; line-height: 1.3">Любов до людей і бізнесу</span>
+<span style="font-size: 15px; color: #4A5578">Зручний документообіг і точки контролю під кожного власника.</span>
+</div>
+
+<div class="rv" style="background: #FFFFFF; border-radius: 6px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<span class="mono" style="font-size: 13px; color: #E4521C; font-weight: 500">§ 4</span>
+<span class="mt" style="font-weight: 700; font-size: 19px; line-height: 1.3">Хто добре відпочиває — добре працює</span>
+<span style="font-size: 15px; color: #4A5578">Без робіт у вихідні та після 17:00, і все вчасно.</span>
+</div>
+
+</div>
+</div>
+</section>
+<section id="f-zaiavka" style="background: #102662; padding: 110px 24px">
+<div style="max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(330px, 100%), 1fr)); gap: 56px; align-items: start">
+<div class="rv" style="display: flex; flex-direction: column; gap: 22px">
+<span class="mono" style="font-size: 13px; color: #CAAE99">// нова справа</span>
+<h2 class="mt" style="margin: 0; font-weight: 700; font-size: clamp(36px, 4.8vw, 68px); line-height: 1.02; letter-spacing: -0.02em">Відкриймо <span style="color: #FB6835">вашу справу</span></h2>
+<p style="margin: 0; font-size: 18px; color: #D5DBEA; max-width: 460px">Розкажіть про бізнес — ми проаналізуємо, як усе працює зараз, і запропонуємо варіанти рішень.</p>
+<a class="btnf" href="https://t.me/MariiaPanchenko_ua" style="align-self: flex-start; text-decoration: none; background: #2AABEE; color: #FFFFFF; font-weight: 700; font-size: 16px; letter-spacing: .04em; padding: 14px 24px; border-radius: 999px; min-height: 52px; display: inline-flex; align-items: center; gap: 10px"><svg aria-hidden="true" fill="#FFFFFF" height="22" viewbox="0 0 24 24" width="22"><path d="M21.5 3.6 2.9 10.8c-1.3.5-1.2 1.3-.2 1.6l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.4l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.4-1.5zM8.9 13.4l9.3-5.9c.4-.3.8-.1.5.2l-7.7 7-.3 3.3-1.8-4.6z"></path></svg>TELEGRAM</a>
+<div class="mono" style="display: flex; flex-direction: column; gap: 4px; font-size: 15px; color: #D5DBEA; border-top: 1px solid #3A5294; padding-top: 18px">
+<a href="tel:+380663568040" style="text-decoration: none; color: #FFFFFF; font-size: 20px; min-height: 44px; display: inline-flex; align-items: center; align-self: flex-start">066 356 80 40</a>
+<a href="https://instagram.com/Mariia_Panchenko_ua" style="text-decoration: none; color: #D5DBEA; min-height: 44px; display: inline-flex; align-items: center; align-self: flex-start">Instagram @Mariia_Panchenko_ua</a>
+<span>Кропивницький · онлайн по Україні · Пн–Пт до 17:00</span>
+</div>
+</div>
+<div class="rv" style="position: relative; padding-top: 40px">
+<div style="position: absolute; left: 0; top: 0; width: 40%; height: 52px; background: #FB6835; border-radius: 10px 10px 0 0"></div>
+<div style="position: relative; background: #FFFFFF; color: #102662; border-radius: 0 10px 10px 10px; padding: clamp(24px, 3vw, 40px)">
+<div data-if="notSent" style="display: contents">
+<form style="display: flex; flex-direction: column; gap: 22px">
+<div class="mono" style="display: flex; justify-content: space-between; font-size: 12px; color: #4A5578; border-bottom: 2px solid #102662; padding-bottom: 12px"><span>ЗАЯВА НА ВІДКРИТТЯ СПРАВИ</span><span>№ 027</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<label class="mono" for="f-n" style="font-size: 12px; color: #4A5578">ІМ'Я</label>
+<input class="fld" id="f-n" style="border: none; border-bottom: 1.5px solid #102662; padding: 10px 4px; min-height: 48px; background: transparent; color: #102662; font-size: 18px" type="text"/>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<label class="mono" for="f-p" style="font-size: 12px; color: #4A5578">ТЕЛЕФОН</label>
+<input class="fld" id="f-p" placeholder="+380" style="border: none; border-bottom: 1.5px solid #102662; padding: 10px 4px; min-height: 48px; background: transparent; color: #102662; font-size: 18px" type="tel"/>
+</div>
+<fieldset style="border: none; margin: 0; padding: 0">
+<legend class="mono" style="font-size: 12px; color: #4A5578; padding: 0; margin-bottom: 10px">ФОРМА БІЗНЕСУ</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+
+<button aria-pressed="true" data-action="k.pick" data-i="0" style="border: 1.5px solid #102662; background: #102662; color: #FFFFFF; border-radius: 6px; padding: 10px 16px; min-height: 44px; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 15px; cursor: pointer" type="button">ФОП</button>
+
+<button aria-pressed="false" data-action="k.pick" data-i="1" style="border: 1.5px solid #102662; background: #FFFFFF; color: #102662; border-radius: 6px; padding: 10px 16px; min-height: 44px; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 15px; cursor: pointer" type="button">ТОВ</button>
+
+<button aria-pressed="false" data-action="k.pick" data-i="2" style="border: 1.5px solid #102662; background: #FFFFFF; color: #102662; border-radius: 6px; padding: 10px 16px; min-height: 44px; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 15px; cursor: pointer" type="button">Відкриваю бізнес</button>
+
+</div>
+</fieldset>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span class="mono" style="font-size: 12px; color: #4A5578">ПОСЛУГА</span>
+<div data-if="hasSvc" style="display: none">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; border: 1.5px dashed #FB6835; border-radius: 6px; padding: 10px 12px">
+<span class="mono" style="color: #E4521C; font-weight: 500">№</span>
+<span style="font-weight: 700; flex: 1 1 180px"><span data-bind="svc"></span></span>
+<button data-action="clearSvc" style="background: #FFFFFF; border: 1.5px solid #102662; border-radius: 6px; padding: 8px 12px; min-height: 44px; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer; color: #102662" type="button">Змінити</button>
+</div>
+</div>
+<div data-if="noSvc" style="display: contents">
+<a href="#f-poslugy" style="align-self: flex-start; color: #102662; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">Оберіть розділ у папці послуг вище</a>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<label class="mono" for="f-m" style="font-size: 12px; color: #4A5578">СУТЬ ЗАДАЧІ</label>
+<textarea class="fld" id="f-m" rows="2" style="border: none; border-bottom: 1.5px solid #102662; padding: 10px 4px; background: transparent; color: #102662; font-size: 17px; resize: vertical"></textarea>
+</div>
+<button class="btnf" data-action="send" style="background: #FB6835; color: #102662; border: none; border-radius: 6px; padding: 18px; min-height: 58px; font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; cursor: pointer" type="button">Подати заявку</button>
+<p style="margin: 0; font-size: 13px; color: #4A5578">Натискаючи кнопку, ви погоджуєтесь на обробку персональних даних.</p>
+</form>
+</div>
+<div data-if="sent" style="display: none">
+<div class="panel" style="display: flex; flex-direction: column; gap: 16px; padding: 20px 0; position: relative">
+<div class="mono" style="font-size: 12px; color: #4A5578">СПРАВА № 027</div>
+<div class="mt" style="font-weight: 700; font-size: 32px; line-height: 1.1">Справу відкрито. Дякуємо!</div>
+<p style="margin: 0; font-size: 17px; color: #4A5578">Зв'яжемося з вами в робочий час.</p>
+<div style="align-self: flex-start; border: 3px solid #FB6835; color: #E4521C; border-radius: 6px; padding: 8px 14px; transform: rotate(-6deg)"><span class="mt" style="font-weight: 800; letter-spacing: .1em">ПРИЙНЯТО</span></div>
+<button data-action="reset" style="align-self: flex-start; background: #FFFFFF; border: 1.5px solid #102662; border-radius: 6px; padding: 12px 18px; min-height: 46px; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 15px; cursor: pointer; color: #102662" type="button">Нова заявка</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer style="background: #0B1B47; color: #B9C2DB; padding: 40px 24px 28px">
+<div style="max-width: 1320px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 14px">
+<span class="mt" style="color: #FFFFFF; font-weight: 600; letter-spacing: .14em">HAPPY FINANCE</span>
+<span>© 2026 Happy Finance («Радісні фінанси») · фінансово-бухгалтерський супровід</span>
+<a href="#" style="color: #B9C2DB">Політика конфіденційності</a>
+</div>
+</footer>
+</div>
+
+<script>
+/* Happy Finance — інтерактив сторінки */
+/* Щоб заявки приходили на пошту, вставте сюди адресу форми, напр. з formspree.io: 'https://formspree.io/f/XXXXXXX' */
+var FORM_ENDPOINT = '';
+
+(function () {
+  var state = { svc: '', kind: 'ФОП' };
+
+  function showIf(name, on) {
+    document.querySelectorAll('[data-if="' + name + '"]').forEach(function (el) {
+      el.style.display = on ? 'contents' : 'none';
+    });
+  }
+  function renderSvc() {
+    document.querySelectorAll('[data-bind="svc"]').forEach(function (el) { el.textContent = state.svc; });
+    showIf('hasSvc', !!state.svc);
+    showIf('noSvc', !state.svc);
+  }
+
+  function showTab(i) {
+    document.querySelectorAll('[data-action="t.pick"]').forEach(function (b) {
+      var on = b.getAttribute('data-i') === String(i);
+      b.style.background = on ? '#102662' : '#DDD6CE';
+      b.style.color = on ? '#FFFFFF' : '#102662';
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('[data-panel]').forEach(function (p) {
+      var on = p.getAttribute('data-panel') === String(i);
+      p.style.display = on ? 'grid' : 'none';
+      if (on) { p.classList.remove('panel'); void p.offsetWidth; p.classList.add('panel'); }
+    });
+  }
+
+  function setKind(btn) {
+    var group = btn.parentElement;
+    group.querySelectorAll('[data-action="k.pick"]').forEach(function (b) {
+      var on = b === btn;
+      b.style.background = on ? '#102662' : '#FFFFFF';
+      b.style.color = on ? '#FFFFFF' : '#102662';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (on) state.kind = b.textContent.trim();
+    });
+  }
+
+  function send(btn) {
+    var form = btn.closest('form');
+    var name = form.querySelector('#f-n'), phone = form.querySelector('#f-p'), msg = form.querySelector('#f-m');
+    if (!phone.value.trim()) { phone.focus(); phone.style.borderBottomColor = '#E4521C'; return; }
+    var data = { name: name.value.trim(), phone: phone.value.trim(), business: state.kind, service: state.svc, message: msg.value.trim() };
+    if (FORM_ENDPOINT) {
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) }).catch(function () {});
+    }
+    showIf('notSent', false); showIf('sent', true);
+  }
+
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-action]');
+    if (!el) return;
+    var a = el.getAttribute('data-action');
+    if (a === 't.pick') showTab(el.getAttribute('data-i'));
+    else if (a === 'k.pick') setKind(el);
+    else if (a === 'orderCur') {
+      var p = el.closest('[data-panel]');
+      state.svc = p ? p.getAttribute('data-title') : ''; renderSvc();
+    }
+    else if (a === 'clearSvc') { state.svc = ''; renderSvc(); }
+    else if (a === 'send') send(el);
+    else if (a === 'reset') {
+      var f = document.querySelector('#f-zaiavka form'); if (f) f.reset();
+      showIf('sent', false); showIf('notSent', true);
+    }
+  });
+  document.addEventListener('submit', function (e) { e.preventDefault(); });
+  renderSvc();
+})();
+
+</script>
+</body>
+</html>
